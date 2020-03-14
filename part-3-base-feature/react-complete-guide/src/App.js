@@ -32,6 +32,15 @@ class App extends Component {
     })
   }
 
+  deletePersonHandler = (indexPerson) => {
+    console.log(indexPerson)
+    const person = this.state.persons
+    person.splice(indexPerson, 1)
+    this.setState({
+      persons : person
+    })
+  }
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -45,18 +54,15 @@ class App extends Component {
     if(this.state.showPersonContent){
       persons = (
         <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            changed={this.nameChangeHandler}
-          >
-            I Single By the way
-          </Person>
-          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+          {this.state.persons.map((person, index) => 
+            <Person 
+              name={person.name} 
+              age={person.age} 
+              click={() => this.deletePersonHandler(index)} 
+              key={index}
+              />
+            )
+          }
         </div>
       )
     }
