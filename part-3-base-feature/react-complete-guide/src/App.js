@@ -25,7 +25,7 @@ class App extends Component {
     persons[personIndex] = person
 
     this.setState({
-      persons : persons
+      persons: persons
     })
   }
 
@@ -47,11 +47,20 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      textColor: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
+    }
+
+    let classes = []
+    if(this.state.persons.length <= 2){
+      classes.push('red')
+    }
+    if(this.state.persons.length <= 1){
+      classes.push('bold')
     }
 
     let persons = null
@@ -71,11 +80,12 @@ class App extends Component {
           }
         </div>
       )
+      style.backgroundColor = "red"
     }
 
     return (
       <div className="App">
-        <p>Hello World</p>
+        <p className={classes.join(' ')}>Hello World</p>
         <button style={style} onClick={this.togglePersonContent}>Show Person Content</button>
         {persons}
       </div>
