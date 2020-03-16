@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium'
+import styled from 'styled-components'
 import Person from './Person/Person';
+
+const ButtonStyled = styled.button`
+    background-color: ${props => props.alt ? 'red' : 'green'};
+    text-color: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+      text-color: black;
+    }
+`
 
 class App extends Component {
 
@@ -47,24 +61,24 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      textColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        textColor: 'black'
-      }
-    }
+    // const style = {
+    //   backgroundColor: 'green',
+    //   textColor: 'white',
+    //   font: 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightgreen',
+    //     textColor: 'black'
+    //   }
+    // }
 
     let classes = []
-    if(this.state.persons.length <= 2){
+    if (this.state.persons.length <= 2) {
       classes.push('red')
     }
-    if(this.state.persons.length <= 1){
+    if (this.state.persons.length <= 1) {
       classes.push('bold')
     }
 
@@ -85,24 +99,24 @@ class App extends Component {
           }
         </div>
       )
-      style.backgroundColor = "red"
-      style[':hover'] = {
-        backgroundColor: 'lightgreen',
-        textColor: 'white'
-      }
+      // style.backgroundColor = "red"
+      // style[':hover'] = {
+      //   backgroundColor: 'lightgreen',
+      //   textColor: 'white'
+      // }
     }
 
     return (
       <div className="App">
         <p className={classes.join(' ')}>Hello World</p>
-        <button style={style} onClick={this.togglePersonContent}>Show Person Content</button>
+        <ButtonStyled alt={this.state.showPersonContent} onClick={this.togglePersonContent}>Show Person Content</ButtonStyled>
         {persons}
       </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
 
 
 //Functional Way
