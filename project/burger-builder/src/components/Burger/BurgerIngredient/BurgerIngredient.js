@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './BurgerIngredients.module.css'
+import styles from './BurgerIngredient.module.css'
 
 class BurgerIngredients extends Component {
     render() {
         let ingredient = null
-        switch (props.type) {
+        switch (this.props.type) {
             case ('bread-bottom'):
                 ingredient = <div className={styles.BreadBottom}></div>
                 break
@@ -32,9 +32,9 @@ class BurgerIngredients extends Component {
                 break
             default:
                 ingredient = null
-
-                return ingredient
         }
+
+        return ingredient
     }
 }
 
