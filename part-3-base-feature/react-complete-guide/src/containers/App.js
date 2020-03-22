@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styleClasses from  './App.css';
-import Person from '../components/Persons/Person/Person.js';
+import Persons from '../components/Persons/Persons.js';
 
 class App extends Component {
 
@@ -54,28 +54,18 @@ class App extends Component {
       classes.push('bold')
     }
 
+
     let persons = null
-    if (this.state.showPersonContent) {
+    if(this.state.showPersonContent){
       persons = (
         <div>
-          {this.state.persons.map((person, index) =>
-            <Person
-              name={person.name}
-              age={person.age}
-              click={() => this.deletePersonHandler(index)}
-              key={person.id}
-              // changed={(event) => this.switchNameHandler(event, person.id)}
-              changed={(event) => this.changeNameHadler(event, person.id)}
-            />
-          )
-          }
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.changeNameHadler}
+          />
         </div>
       )
-      // style.backgroundColor = "red"
-      // style[':hover'] = {
-      //   backgroundColor: 'lightgreen',
-      //   textColor: 'white'
-      // }
     }
 
     return (
