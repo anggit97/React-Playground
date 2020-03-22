@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Layout from './components/Layout/Layout'
+import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
 class App extends Component {
   
@@ -9,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Layout>
-          <p>Test PAragraph</p>
+          <BurgerBuilder/>
         </Layout>
       </div>
     );
